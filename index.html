@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Molecule Formula Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <h1>🧪 Molecule Formula Quiz</h1>
+      <div class="stats">
+        <div class="pill">Question: <span id="qNum">1</span>/<span id="qTotal">0</span></div>
+        <div class="pill">Score: <span id="score">0</span></div>
+        <div class="pill">Streak: <span id="streak">0</span></div>
+        <div class="pill" id="timerPill" title="Time left">⏱ <span id="timeLeft">—</span></div>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="prompt">
+        <p class="label">Guess the correct formula for:</p>
+        <h2 id="moleculeName">—</h2>
+      </div>
+
+      <div id="choices" class="choices"></div>
+
+      <div class="feedback" id="feedback" aria-live="polite"></div>
+
+      <div class="controls">
+        <button id="nextBtn" class="btn primary" disabled>Next</button>
+        <button id="skipBtn" class="btn ghost">Skip</button>
+        <button id="restartBtn" class="btn danger">Restart</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <label class="toggle">
+        <input type="checkbox" id="timedMode" />
+        <span>Timed mode (15s/question)</span>
+      </label>
+      <button id="shuffleBtn" class="btn tiny">Shuffle Questions</button>
+      <button id="editBtn" class="btn tiny">Edit Question Bank</button>
+    </footer>
+
+    <!-- Simple modal for editing -->
+    <dialog id="editor">
+      <form method="dialog" class="modal">
+        <h3>Edit Question Bank</h3>
+        <p class="hint">
+          Format: <code>{"name":"Water","formula":"H2O"}</code> per line (JSONL).
+          Keep it short and simple.
+        </p>
+        <textarea id="bankText" spellcheck="false"></textarea>
+        <div class="modalActions">
+          <button value="cancel" class="btn ghost">Cancel</button>
+          <button id="saveBankBtn" value="default" class="btn primary">Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="script.js"></script>
+  </main>
+</body>
+</html>
